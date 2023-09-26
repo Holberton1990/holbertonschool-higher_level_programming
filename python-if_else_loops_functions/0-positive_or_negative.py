@@ -7,4 +7,3 @@ elif number < 0:
     print(f"{number} is negativ")
 else:
     print(f"{number} is zero")
-        
