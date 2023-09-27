@@ -1,3 +1,3 @@
-#!/usr/bin/python3 
-for ascii_value in range(ord('a'), ord('z')+1):
-    print(f"{chr(ascii_value)}", end=' ')
+#!/usr/bin/python3
+for i in range(97, 123):
+    print("{}".format(chr(i)), end="")
