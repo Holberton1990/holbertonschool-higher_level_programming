@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-inport hidden_4.pyc
-    name = dir(hidden.4)
-    for name in name:
-        if name[0] != 0:
-        print(name)
+if __name__ == "__main__":
+    import hidden_4
+    names = dir(hidden_4)
+    for name in names:
+        if name[0] != "_":
+            print(name)
+            
