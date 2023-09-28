@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-import sys
-def main():
-    num_arg = len(sys.argv) - 1
-    arguments = sys.argv[1:]
+    import sys
+    numArgs = len(sys.argv) - 1
     if numArgs == 0:
         print("0 arguments.")
     elif numArgs == 1:
@@ -12,4 +10,3 @@ def main():
         print(f"{numArgs} arguments:")
     for i in range(numArgs):
         print(f"{i + 1}: {sys.argv[i + 1]}")
-        
