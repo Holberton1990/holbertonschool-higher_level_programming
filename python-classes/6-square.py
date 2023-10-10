@@ -10,12 +10,13 @@ class Square:
     This is the documentation for the Square class.
     The class represents a geometric square and associated operations.
     """
-    def __init__(self, size=0):
+    def __init__(self, size=0, position=(0, 0)):
         """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
         self.__size = size
+        self.position = position
 
     @property
     def size(self):
@@ -37,23 +38,25 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = value
 
+    @property
     def position(self):
         """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        return self.__position
+        return (self.__position)
+
     @position.setter
     def position(self, value):
         """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        if (not isinstance(value,tuple)or:
+        if (not isinstance(value, tuple) or
                 len(value) != 2 or
                 not all(isinstance(i, int) for i in value) or
-                not all(i >= 0 for in value)):
-            raise TypeError("position must be a tuple of2")
+                not all(i >= 0 for i in value)):
+            raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
     def area(self):
@@ -78,5 +81,4 @@ class Square:
                     print(' ', end='')
                 for col in range(self.__size):
                     print('#', end='')
-                print()
-
+                print
