@@ -6,8 +6,8 @@ def add_integer(a, b=98):
     """
     python3 -c 'print(__import__("my_module").__doc__)'
     """ 
-    if type(a)  not isinstance(int, float):
+    if not isinstance(a, int) and not isinstance(a, float):
         raise TypeError("a must be an integer")
-    if type(b) not isinstance(int, float):
+    if not isinstance(b, int) and not isinstance(b, float):
         raise TypeError("b must be an integer")
-    return int(a) + (b)
+    return int(a) + int(b)
