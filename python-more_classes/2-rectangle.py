@@ -9,9 +9,9 @@ class Rectangle:
         width (int): width of the rectangle
         height (int): height of the rectangle
     """
-    def __init__(self, width=0, height=0):
-        self.height = height
-        self.width = width
+    def __init__(self, width=0, height=0):  
+        self._height = height
+        self._width = width
 
     @property
     def width(self):
