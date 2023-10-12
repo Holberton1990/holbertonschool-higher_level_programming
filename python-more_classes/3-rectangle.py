@@ -1,15 +1,18 @@
 #!/usr/bin/python3
+"""
+python3 -c 'print(__import__("my_module").__doc__)'
+python3 -c 'print(__import__("my_module").MyClass.__doc__)'
+"""
+
+
 class Rectangle:
     """
-    __init__ - inicializon një klasë drejtkëndëshi
-
-    Args:
-        width (int): gjërësia e drejtkëndëshit
-        height (int): lartësia e drejtkëndëshit
+    python3 -c 'print(__import__("my_module").my_function.__doc__)'
+    python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
     """
     def __init__(self, width=0, height=0):
-        self.width = width
         self.height = height
+        self.width = width
 
     @property
     def width(self):
@@ -18,9 +21,9 @@ class Rectangle:
     @width.setter
     def width(self, value):
         if not isinstance(value, int):
-            raise TypeError("gjërësia duhet të jetë një numër të plotë")
+            raise TypeError("width must be an integer")
         if value < 0:
-            raise ValueError("gjërësia duhet të jetë >= 0")
+            raise ValueError("width must be >= 0")
         self.__width = value
 
     @property
@@ -30,23 +33,7 @@ class Rectangle:
     @height.setter
     def height(self, value):
         if not isinstance(value, int):
-            raise TypeError("lartësia duhet të jetë një numër të plotë")
+            raise TypeError("height must be an integer")
         if value < 0:
-            raise ValueError("lartësia duhet të jetë >= 0")
+            raise ValueError("height must be >= 0")
         self.__height = value
-
-    def area(self):
-        return self.__height * self.__width
-
-    def perimeter(self):
-        if self.__width == 0 or self.__height == 0:
-            return 0
-        return 2 * (self.__height + self.__width)
-
-    def __str__(self):
-        if self.__width == 0 or self.__height == 0:
-            return ""
-        return "\n".join(["#" * self.__width] * self.__height)
-
-    def __repr__(self):
-        return f"Rectangle({self.__width}, {self.__height})"
