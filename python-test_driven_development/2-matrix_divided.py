@@ -2,12 +2,17 @@
 """
 python3 -c 'print(__import__("my_module").__doc__)'
 """
+
+
 def matrix_divided(matrix, div):
     """
-    python3 -c 'print(__import__("my_module").__doc__)'
+    python3 -c 'print(__import__("my_module").my_function.__doc__)'
     """
-    if matrix not isinstance(int, float)
-        raise TypeError("matrix must be a matrix(list of lists) of integers/floats")
+    if not isinstance(matrix, list) or not matrix:
+        raise TypeError(
+                "matrix must be a matrix (list of lists) of integers/floats"
+                )
+
     for row in matrix:
         if not isinstance(row, list):
             raise TypeError(
@@ -33,3 +38,5 @@ def matrix_divided(matrix, div):
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
+
+    return [[round(i / div, 2) for i in row] for row in matrix]
