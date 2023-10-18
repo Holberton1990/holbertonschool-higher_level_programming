@@ -4,17 +4,17 @@ python3 -c 'print(__import__("my_module").__doc__)'
 """
 
 
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
+Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
     """
-python3 -c 'print(__import__("my_module").__doc__)'
-"""
+    python3 -c 'print(__import__("my_module").MyClass.__doc__)'
+    """
     def __init__(self, size):
         self.integer_validator("size", size)
-        super()._init_(size, size)
-        self._size = size
+        super().__init__(size, size)
+        self.__size = size
 
     def area(self):
-        return self._size ** 2
+        return self.__size ** 2
