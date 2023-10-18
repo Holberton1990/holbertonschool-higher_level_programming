@@ -11,4 +11,5 @@ def print_sorted(self):
     python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
     """
     sorted_list = sorted(self)
-    return (sorted_list)
+    print (sorted_list(self))
+    return sorted_list
