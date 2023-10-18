@@ -1,24 +1,22 @@
 #!/usr/bin/python3
-'''
-Python simple module
-for demonstarative purpose
-'''
+"""
+python3 -c 'print(__import__("my_module").__doc__)'
+"""
+
+
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    '''
-    Class that inherits from list class
-    '''
+    """
+    python3 -c 'print(__import__("my_module").MyClass.__doc__)'
+    """
     def __init__(self, width, height):
-        '''
-        Init function for Rectangle class
-        '''
-        BaseGeometry.integer_validator(self, "width", width)
-        BaseGeometry.integer_validator(self, "height", height)
+        self.integer_validator("width", width)
         self.__width = width
+        self.integer_validator("height", height)
         self.__height = height
-    
+
     def area(self):
         return self.__width * self.__height
 
