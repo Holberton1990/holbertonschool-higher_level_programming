@@ -3,13 +3,17 @@
 python3 -c 'print(__import__("my_module").__doc__)'
 """
 
-class MyList(list):
 
-def print_sorted(self):
+def is_kind_of_class(obj, a_class):
     """
     'print(__import__("my_module").my_function.__doc__)'
     python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
     """
-    sorted_list = sorted(self)
-    print (sorted_list(self))
-    return sorted_list
+    if isinstance(obj, a_class):
+        return True
+    return False
+
+
+"""
+return isinstance(obj, a_class)
+"""
