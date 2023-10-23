@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 class Base:
     def __init__(self, id):
         self.id = id
@@ -61,17 +62,15 @@ class Rectangle(Base):
 
     def __str__(self):
         return "[Rectangle] instance"
+ 
+class Rectangle(Base):
+
+    def update(self, *args):
+         attr_names = ["id", "width", "height", "x", "y"]
+        for attr, value in zip(attr_names, args):
+            setattr(self, attr, value)
 
 class Rectangle(Base):
-    def update(self, *args):
-
-class Rectangle(Base):
-    def update(self, *args):
-    aatr_names = ["id", "width", "height", "x", "y"]
-    for attr, value in zip(attr_names, args):
-        setattr(self, attr, value)      
-class Rectangle(Base):
-    # ...
     
     def update(self, *args, **kwargs):
         attr_names = ["id", "width", "height", "x", "y"]
@@ -126,7 +125,7 @@ class Base:
 class Base():
     def fromjsonstring(jsonstring):
         data = json.loads(jsonstring)
-        objects = [(cls.create(obj) for obj in data]
+        objects = [cls.create(obj) for obj in data]
         return objects
 
 class Base:
