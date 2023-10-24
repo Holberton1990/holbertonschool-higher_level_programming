@@ -78,3 +78,20 @@ class Rectangle():
     python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
     """
     def display(self):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        print("\" * self.y, end="")
+        for h in range(self.height):
+            print(" " * self.x, end="")
+            print("#" * self.width)
+
+class Rectangle:
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        def __str__(self)
+            return [Rectangle] {} {}/{} - {}/{}.format(self.id, self.width, self.y, self.height, self.x) 
+              
