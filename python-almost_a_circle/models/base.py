@@ -13,7 +13,3 @@ class Base:
             Base._nb_objects += 1
             self.id = Base.__nb__objects
  
- class Rectangle():
-
-    def area(self):
-        return self.__height * self__width
