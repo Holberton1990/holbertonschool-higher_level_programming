@@ -2,6 +2,8 @@
 """
 python3 -c 'print(__import__("my_module").__doc__)'
 """
+import json
+
 class Base:
 
     __nb_objects = 0
