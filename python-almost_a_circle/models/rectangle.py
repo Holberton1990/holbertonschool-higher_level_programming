@@ -70,11 +70,7 @@ def y(self, value):
         """
         return self.__height * self__width
 
-class Rectangle():
-    """
-    python3 -c 'print(__import__("my_module").my_function.__doc__)'
-    python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
-    """
+
     def display(self):
         """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
@@ -85,19 +81,18 @@ class Rectangle():
             print(" " * self.x, end="")
             print("#" * self.width)
 
-class Rectangle:
-        """
+   def __str__(self):
+            """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
-        """
-        def __str__(self)
+        """   
             return [Rectangle] {} {}/{} - {}/{}.format(self.id, self.width, self.y, self.height, self.x) 
-class Rectangle:
-         """
+
+        def update(self, *args, **kwargs):
+                   """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        def update(self, *args, **kwargs):
             attributes = ['id', 'width', 'heigh', 'x', 'y']
                 if args or args != "[]":
                 for idx in range(len(args)):
