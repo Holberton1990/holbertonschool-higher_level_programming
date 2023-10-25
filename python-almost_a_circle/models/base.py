@@ -31,4 +31,7 @@ class Base:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
- 
+    
+    def save_file(cls, list_objs):
+
+        list_objs = 
