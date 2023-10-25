@@ -62,14 +62,12 @@ def y(self, value):
     if value <= 0:
         return ValueError("y must be >= 0")
     self.__y = y
-
- class Rectangle():
-    """
-        python3 -c 'print(__import__("my_module").my_function.__doc__)'
-        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
-    """
         
     def area(self):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
         return self.__height * self__width
 
 class Rectangle():
