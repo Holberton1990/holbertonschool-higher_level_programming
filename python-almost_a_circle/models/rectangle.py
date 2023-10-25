@@ -95,7 +95,8 @@ def y(self, value):
             """
             attributes = ['id', 'width', 'heigh', 'x', 'y']
 
-                if args or args != "[]"
+
+                if args or args != "[]":
                 for idx in range(len(args)):
                     setattr(self, attributes[idx], args[idx])
                 else:
