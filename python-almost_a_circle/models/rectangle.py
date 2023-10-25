@@ -99,8 +99,30 @@ class Rectangle:
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        def update(self, *args):
+        def update(self, *args, **kwargs):
             attributes = ['id', 'width', 'heigh', 'x', 'y']
-            
+                if args or args != "[]":
                 for idx in range(len(args)):
-                    setattr(self, attributes[idx], args[idx])            
+                    setattr(self, attributes[idx], args[idx])
+                else:
+                    for key, value in kwargs.items():
+                        setattr(self, key, value)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
