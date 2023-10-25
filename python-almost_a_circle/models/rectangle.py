@@ -97,7 +97,7 @@ def y(self, value):
 
 
                 if args or args != "[]":
-                for idx in range(len(args)):
+                    for idx in range(len(args)):
                     setattr(self, attributes[idx], args[idx])
                 else:
                     for key, value in kwargs.items():
