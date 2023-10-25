@@ -48,7 +48,7 @@ def x(self):
 def x(self, value):
      if type(value) is not int:
             raise TypeError("x must be an integer")
-    if value < 0:
+    if value <= 0:
         return ValueError("x must be >= 0")
     self.__x = x 
 
