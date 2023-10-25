@@ -19,49 +19,49 @@ class Rectangle(Base):
         self.__y = y
         super().__init__(id)
 
-@property
-def width(self):
-    return self._width
-@width.setter
-def width(self, value):
-    if width is not int:
-        raise TypeError(" width must be an integer")
-    if width < 0:
-        return ValueError("width must be >= 0")
-self.__width = width
+    @property
+    def width(self):
+        return self.__width
+    @width.setter
+    def width(self, value):
+        if type(value) is not int:
+            raise TypeError(" width must be an integer")
+        if value < 0:
+            return ValueError("width must be >= 0")
+            self.__width = width
 
-@property
-def height(self):
-    return self.__height
+    @property
+    def height(self):
+        return self.__height
 @height.setter
-def height(self, value):
-    if type(value) is not int:
+    def height(self, value):
+        if type(value) is not int:
             raise TypeError("height must be an integer")
-    if value < 0:
-        return ValueError("height must be >= 0")
-    self.__height = height
+        if value < 0:
+            return ValueError("height must be >= 0")
+        self.__height = value
 
 @property
-def x(self):
-    return self.__x
+    def x(self):
+        return self.__x
 @width.setter
-def x(self, value):
-    if type(value) is not int:
+    def x(self, value):
+        if type(value) is not int:
             raise TypeError("x must be an integer")
-    if value < 0:
-        return ValueError("x must be >= 0")
-    self.__x = value 
+        if value < 0:
+            return ValueError("x must be >= 0")
+        self.__x = value 
 
 @property
-def y(self):
-    return self._y
+    def y(self):
+        return self._y
 @y.setter
-def y(self, value):
-    if type(value) is not int:
+    def y(self, value):
+        if type(value) is not int:
             raise TypeError("y must be an integer")
-    if value <= 0:
-        return ValueError("y must be >= 0")
-    self.__y = y
+        if value <= 0:
+            return ValueError("y must be >= 0")
+        self.__y = y
         
     def area(self):
         """
@@ -81,51 +81,33 @@ def y(self, value):
             print(" " * self.x, end="")
             print("#" * self.width)
 
-        def __str__(self):
-            """
-            python3 -c 'print(__import__("my_module").my_function.__doc__)'
-            python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
-            """   
-            return "[Rectangle] {} {}/{} - {}/{}".format(self.id, self.width, self.y, self.height, self.x) 
+    def __str__(self):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """   
+        return "[Rectangle] {} {}/{} - {}/{}".format(self.id, self.width, self.y, self.height, self.x) 
 
-        def update(self, *args, **kwargs):
-            """
-            python3 -c 'print(__import__("my_module").my_function.__doc__)'
-            python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
-            """
-            attributes = ['id', 'width', 'heigh', 'x', 'y']
+    def update(self, *args, **kwargs):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        attributes = ['id', 'width', 'heigh', 'x', 'y']
 
 
-                if args or args != "[]":
-                    for idx in range(len(args)):
-                    setattr(self, attributes[idx], args[idx])
-                else:
-                    for key, value in kwargs.items():
-                        setattr(self, key, value)
+        if args:
+            for idx in range(len(args)):
+                setattr(self, attributes[idx], args[idx])
+            else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
         
-        def to_dictionary(self):
-            {
-                "id": self.id,
-                "width": self.width
-                "height": self.height
-                "x": self.x
-                "y": self.y
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def to_dictionary(self):
+        return {
+            "id": self.id,
+            "width": self.__width
+            "height": self.__height
+            "x": self.__x
+            "y": self.__y
+        }
