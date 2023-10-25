@@ -59,7 +59,7 @@ def y(self):
 def y(self, value):
     if type(value) is not int:
             raise TypeError("y must be an integer")
-    if value < 0:
+    if value <= 0:
         return ValueError("y must be >= 0")
     self.__y = y
 
@@ -82,7 +82,7 @@ class Rectangle():
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        print("\" * self.y, end="")
+        print("\n" * self.y, end="")
         for h in range(self.height):
             print(" " * self.x, end="")
             print("#" * self.width)
