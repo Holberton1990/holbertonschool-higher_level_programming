@@ -89,12 +89,13 @@ def y(self, value):
             return "[Rectangle] {} {}/{} - {}/{}".format(self.id, self.width, self.y, self.height, self.x) 
 
         def update(self, *args, **kwargs):
-                   """
-        python3 -c 'print(__import__("my_module").my_function.__doc__)'
-        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
-        """
+            """
+            python3 -c 'print(__import__("my_module").my_function.__doc__)'
+            python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+            """
             attributes = ['id', 'width', 'heigh', 'x', 'y']
-                if args or args != "[]":
+
+                if args or args != "[]"
                 for idx in range(len(args)):
                     setattr(self, attributes[idx], args[idx])
                 else:
