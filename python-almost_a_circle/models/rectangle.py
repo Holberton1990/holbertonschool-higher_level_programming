@@ -81,7 +81,7 @@ def y(self, value):
             print(" " * self.x, end="")
             print("#" * self.width)
 
-   def __str__(self):
+        def __str__(self):
         """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
