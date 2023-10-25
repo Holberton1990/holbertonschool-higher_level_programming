@@ -35,9 +35,9 @@ def height(self):
     return self.__height
 @height.setter
 def height(self, value):
-     if height is not int:
+    if type(value) is not int:
             raise TypeError("height must be an integer")
-    if height < 0:
+    if value < 0:
         return ValueError("height must be >= 0")
     self.__height = height
 
@@ -46,9 +46,9 @@ def x(self):
     return self.__x
 @width.setter
 def x(self, value):
-     if x is not int:
+     if type(value) is not int:
             raise TypeError("x must be an integer")
-    if x < 0:
+    if value < 0:
         return ValueError("x must be >= 0")
     self.__x = x 
 
@@ -57,9 +57,9 @@ def y(self):
     return self._y
 @y.setter
 def y(self, value):
-    if y is not int:
+    if type(value) is not int:
             raise TypeError("y must be an integer")
-    if y < 0:
+    if value < 0:
         return ValueError("y must be >= 0")
     self.__y = y
 
