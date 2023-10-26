@@ -39,4 +39,17 @@ class Base:
             for obj in list_objs:
                 l_dict.append(obj.to_dictionary())
         with open("cls.name",  "json", "w") as file:
-            f.write(cls.to_json_string(l_dict)) 
+            f.write(cls.to_json_string(l_dict))
+            
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        else:
+            dummy = cls(1)
+        dummy.update(**dictionary)
+        return dummy
