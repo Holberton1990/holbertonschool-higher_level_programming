@@ -4,6 +4,7 @@ python3 -c 'print(__import__("my_module").__doc__)'
 """
 from models.base import Base
 
+
 class Rectangle(Base):
     """
     python3 -c 'print(__import__("my_module").MyClass.__doc__)'
@@ -13,63 +14,66 @@ class Rectangle(Base):
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        self.__width = width
-        self.__height = height
-        self.__x = x 
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super().__init__(id)
 
     @property
     def width(self):
         return self.__width
-    @width.setter
-    def width(self, value):
-        if type(value) is not int:
-            raise TypeError(" width must be an integer")
-        if value < 0:
-            return ValueError("width must be >= 0")
-            self.__width = width
 
     @property
     def height(self):
         return self.__height
-    @height.setter
-    def height(self, value):
-        if type(value) is not int:
-            raise TypeError("height must be an integer")
-        if value < 0:
-            raise ValueError("height must be >= 0")
-        self.__height = value
 
     @property
     def x(self):
         return self.__x
-    @width.setter
-    def x(self, value):
-        if type(value) is not int:
-            raise TypeError("x must be an integer")
-        if value < 0:
-            return ValueError("x must be >= 0")
-        self.__x = value 
 
     @property
     def y(self):
         return self.__y
+
+    @width.setter
+    def width(self, value):
+        if type(value) != int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = value
+
+    @height.setter
+    def height(self, value):
+        if type(value) != int:
+            raise TypeError("height must be an integer")
+        if value <= 0:
+            raise ValueError("height must be > 0")
+        self.__height = value
+
+    @x.setter
+    def x(self, value):
+        if type(value) != int:
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value
+
     @y.setter
     def y(self, value):
-        if type(value) is not int:
+        if type(value) != int:
             raise TypeError("y must be an integer")
-        if value <= 0:
-            return ValueError("y must be >= 0")
+        if value < 0:
+            raise ValueError("y must be >= 0")
         self.__y = value
-        
+
     def area(self):
         """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        return self.height * self.width
-
+        return self.width * self.height
 
     def display(self):
         """
@@ -81,29 +85,34 @@ class Rectangle(Base):
             print(" " * self.x, end="")
             print("#" * self.width)
 
-    def __str__(self):
-        """
-        python3 -c 'print(__import__("my_module").my_function.__doc__)'
-        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
-        """   
-        return "[Rectangle] {} {}/{} - {}/{}".format(self.id, self.width, self.y, self.height, self.x) 
-
     def update(self, *args, **kwargs):
         """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        attributes = ['id', 'width', 'height', 'x', 'y']
-
         if args:
-            for idx in range(len(args)):
-                setattr(self, attributes[idx], args[idx])
-        else:
-            for key, value in kwargs.items():
-                setattr(self, key, value)
+            a_index = 0
+            for arg in args:
+                if a_index == 0:
+                    self.id = arg
+                elif a_index == 1:
+                    self.width = arg
+                elif a_index == 2:
+                    self.height = arg
+                elif a_index == 3:
+                    self.x = arg
+                elif a_index == 4:
+                    self.y = arg
+                a_index += 1
 
-        
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
     def to_dictionary(self):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
         return {
             "id": self.id,
             "width": self.width,
@@ -111,3 +120,11 @@ class Rectangle(Base):
             "x": self.x,
             "y": self.y
         }
+
+    def __str__(self):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+                self.id, self.x, self.y, self.width, self.height)

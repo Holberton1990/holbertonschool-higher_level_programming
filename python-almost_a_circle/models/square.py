@@ -17,7 +17,6 @@ class Square(Rectangle):
         """
         super().__init__(size, size, x, y, id)
 
- 
     @property
     def size(self):
         return self.width
@@ -27,39 +26,43 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
-    def update(self, *args, **kwargs)
-    list_arguments = ["id", "size", "x", "y"]
-
-    if args or args != "[]":
-        for idx in range(len(args)):
-            seattr(self, atributtes[idx], args[idx])
-    else:
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-
-    def to_dictionary(self):
-        {
-            "id": self.id,
-            "size": self.size,
-            "x": self.x,
-            "y": self.y
-        }
-
-        
-    @classmethod
-    def load_from_file(cls):
+    def update(self, *args, **kwargs):
         """
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        file = cls.__name__ + ".json"
-        l_inst = []
-        try:
-            with open(file, "r") as f:
-                l_dict = Base.from_json_string(f.read())
-                for d_item in l_dict:
-                    inst = cls.create(**d_item)
-                    l_inst.append(inst)
-            return l_inst
-        except FileNotFoundError:
-            return []
+        if args:
+            a_index = 0
+            for arg in args:
+                if a_index == 0:
+                    self.id = arg
+                elif a_index == 1:
+                    self.size = arg
+                elif a_index == 2:
+                    self.x = arg
+                elif a_index == 3:
+                    self.y = arg
+                a_index += 1
+
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def to_dictionary(self):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        return {
+            "id": self.id,
+            "size": self.width,
+            "x": self.x,
+            "y": self.y
+            }
+
+    def __str__(self):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        return "[Square] ({}) {}/{} - {}".format(
+                self.id, self.x, self.y, self.width)

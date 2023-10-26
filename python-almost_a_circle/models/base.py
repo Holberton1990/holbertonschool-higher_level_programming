@@ -11,7 +11,6 @@ class Base:
     """
     python3 -c 'print(__import__("my_module").MyClass.__doc__)'
     """
-
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -27,18 +26,36 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-        else:
-            return json.dumps(list_dictionaries)
-    
-    def save_file(cls, list_objs):
-        if list_objs is None:
-            list_objs = []
+        return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        l_dict = []
+        if list_objs is not None:
             for obj in list_objs:
                 l_dict.append(obj.to_dictionary())
-        with open("cls.name",  "json", "w") as file:
+        with open(cls.__name__ + ".json", 'w') as f:
             f.write(cls.to_json_string(l_dict))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        if json_string is None or json_string == "[]":
+            return []
+        return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
@@ -53,4 +70,21 @@ class Base:
         dummy.update(**dictionary)
         return dummy
 
-    
+    @classmethod
+    def load_from_file(cls):
+        """
+        python3 -c 'print(__import__("my_module").my_function.__doc__)'
+        python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+        """
+        file = cls.__name__ + ".json"
+        l_inst = []
+        try:
+            with open(file, "r") as f:
+                l_dict = Base.from_json_string(f.read())
+                for d_item in l_dict:
+                    inst = cls.create(**d_item)
+                    l_inst.append(inst)
+            return l_inst
+        except FileNotFoundError:
+            return []
+  
