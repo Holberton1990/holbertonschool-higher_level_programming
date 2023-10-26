@@ -93,7 +93,7 @@ class Rectangle(Base):
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        attributes = ['id', 'width', 'heigh', 'x', 'y']
+        attributes = ['id', 'width', 'height', 'x', 'y']
 
         if args:
             for idx in range(len(args)):
@@ -101,6 +101,7 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
+
         
     def to_dictionary(self):
         return {
