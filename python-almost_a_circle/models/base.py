@@ -33,14 +33,13 @@ class Base:
             return json.dumps(list_dictionaries)
     
     def save_file(cls, list_objs):
-
         if list_objs is None:
             list_objs = []
             for obj in list_objs:
                 l_dict.append(obj.to_dictionary())
         with open("cls.name",  "json", "w") as file:
             f.write(cls.to_json_string(l_dict))
-            
+
     @classmethod
     def create(cls, **dictionary):
         """
@@ -53,3 +52,6 @@ class Base:
             dummy = cls(1)
         dummy.update(**dictionary)
         return dummy
+
+    def load_from_file(cls):
+        if cls.__name__ not in json.file
