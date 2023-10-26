@@ -95,13 +95,12 @@ class Rectangle(Base):
         """
         attributes = ['id', 'width', 'heigh', 'x', 'y']
 
-
         if args:
             for idx in range(len(args)):
                 setattr(self, attributes[idx], args[idx])
-            else:
-                for key, value in kwargs.items():
-                    setattr(self, key, value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
         
     def to_dictionary(self):
         return {
@@ -111,4 +110,3 @@ class Rectangle(Base):
             "x": self.x,
             "y": self.y
         }
-    

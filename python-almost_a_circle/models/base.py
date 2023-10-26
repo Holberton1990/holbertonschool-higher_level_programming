@@ -53,5 +53,4 @@ class Base:
         dummy.update(**dictionary)
         return dummy
 
-    def load_from_file(cls):
-        if cls.__name__ not in json.file
+    
