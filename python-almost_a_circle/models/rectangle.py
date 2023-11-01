@@ -2,6 +2,8 @@
 """
 python3 -c 'print(__import__("my_module").__doc__)'
 """
+
+
 from models.base import Base
 
 
@@ -38,7 +40,7 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
@@ -46,7 +48,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("height must be an integer")
         if value <= 0:
             raise ValueError("height must be > 0")
@@ -54,7 +56,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("x must be an integer")
         if value < 0:
             raise ValueError("x must be >= 0")
@@ -62,7 +64,7 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
@@ -90,23 +92,14 @@ class Rectangle(Base):
         python3 -c 'print(__import__("my_module").my_function.__doc__)'
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
-        if args:
-            a_index = 0
-            for arg in args:
-                if a_index == 0:
-                    self.id = arg
-                elif a_index == 1:
-                    self.width = arg
-                elif a_index == 2:
-                    self.height = arg
-                elif a_index == 3:
-                    self.x = arg
-                elif a_index == 4:
-                    self.y = arg
-                a_index += 1
+        attributes = ['id', 'width', 'height', 'x', 'y']
 
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        if args:
+            for idx in range(len(args)):
+                setattr(self, attributes[idx], args[idx])
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     def to_dictionary(self):
         """
@@ -127,4 +120,4 @@ class Rectangle(Base):
         python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
         """
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
-                self.id, self.x, self.y, self.width, self.height)
+            self.id, self.x, self.y, self.width, self.height)
