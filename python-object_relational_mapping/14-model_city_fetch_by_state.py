@@ -25,4 +25,3 @@ if __name__ == "__main__":
         print(f"{city[0]}: ({city[1]}) {city[2]}")
 
     session.close()
-

@@ -23,4 +23,3 @@ if __name__ == "__main__":
         .order_by(State.id).all()
     for row in result:
         print('{0}: {1}'.format(row.id, row.name))
-
